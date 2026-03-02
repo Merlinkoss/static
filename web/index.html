@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anton Kondratiuk - Portfolio</title>
+    <title>Anton Kondratiuk - Senior Android Software Engineer Portfolio</title>
+
+    <!-- SEO & AI Optimization Meta Tags -->
+    <meta name="description"
+        content="Portfolio of Anton Kondratiuk, a Senior Software Engineer with 8 years of experience in Android Native development.">
+    <meta name="keywords"
+        content="Anton Kondratiuk, Senior Software Engineer, Android Native, Android Developer, Mobile Development, Kotlin, Java, Portfolio">
+    <meta name="author" content="Anton Kondratiuk">
+    <!-- Allowed indexing and crawling by all bots, including AI scrapers -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Open Graph for Link Previews and AI Knowledge Graph Context -->
+    <meta property="og:title" content="Anton Kondratiuk - Senior Android Software Engineer">
+    <meta property="og:description"
+        content="Senior Software Engineer with 8+ years of experience in Android native development.">
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Anton">
+    <meta property="profile:last_name" content="Kondratiuk">
+    <meta property="og:url" content="https://lamprof.com/">
+
+    <!-- Structured Data (JSON-LD) for Search Engines & LLMs (Gemini, ChatGPT, Perplexity) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anton Kondratiuk",
+      "jobTitle": "Senior Software Engineer",
+      "description": "Senior Software Engineer with 8 years of experience in Android Native development.",
+      "url": "https://lamprof.com/",
+      "sameAs": [
+        "https://www.linkedin.com/in/akondratiuk-software-engineer/",
+        "https://t.me/lamprof"
+      ],
+      "knowsAbout": [
+        "Android Development",
+        "Native Android",
+        "Software Engineering",
+        "Mobile Application Development",
+        "Kotlin",
+        "Java"
+      ]
+    }
+    </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,16 +59,18 @@
             height: 100vh;
             background-color: #f0f0f0;
         }
+
         .container {
             width: 90%;
             max-width: 1200px;
             height: 80vh;
             background-color: white;
             padding: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
         }
+
         h1 {
             text-align: center;
             font-size: 2em;
@@ -34,22 +80,50 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        .top-left, .top-right, .bottom-left, .bottom-right {
+
+        .top-left,
+        .top-right,
+        .bottom-left,
+        .bottom-right {
             position: absolute;
             padding: 10px;
             font-size: 1em;
         }
-        .top-left { top: 10px; left: 10px; }
-        .top-right { top: 10px; right: 10px; }
-        .bottom-left { bottom: 10px; left: 10px; }
-        .bottom-right { bottom: 10px; right: 10px; }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /* Ensure semantic tag resets */
+        address {
+            font-style: normal;
+        }
+
         a {
             color: #0077B5;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         @media (max-width: 768px) {
             .bottom-right {
                 display: none;
@@ -57,22 +131,29 @@
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="top-left">
-            <a href="https://www.linkedin.com/in/akondratiuk-software-engineer/" target="_blank">LinkedIn</a>
-        </div>
+    <main class="container">
+        <nav class="top-left" aria-label="Social Links">
+            <!-- Added rel="me" which is useful for federated networks and bot identity validation -->
+            <a href="https://www.linkedin.com/in/akondratiuk-software-engineer/" target="_blank"
+                rel="noopener noreferrer me">LinkedIn</a>
+        </nav>
         <div class="top-right">
             <a href="1Anton_Kondratiuk_Android_CV.pdf" download>Download CV</a>
         </div>
-        <h1>Anton Kondratiuk</h1>
-        <div class="bottom-left">
-            <p>Telegram: <a href="https://t.me/lamprof" target="_blank">lamprof.t.me</a></p>
+        <header>
+            <h1>Anton Kondratiuk</h1>
+        </header>
+        <address class="bottom-left">
+            <p>Telegram: <a href="https://t.me/lamprof" target="_blank" rel="noopener noreferrer me">lamprof.t.me</a>
+            </p>
             <p>Email: <a href="mailto:kondratyuk.anton.ig@gmail.com">kondratyuk.anton.ig@gmail.com</a></p>
-        </div>
-        <div class="bottom-right">
-            <p>SSE with 8 years of exp in Android Native</p>
-        </div>
-    </div>
+        </address>
+        <section class="bottom-right" aria-label="About">
+            <p>Senior Software Engineer with 8 years of experience in Android Native</p>
+        </section>
+    </main>
 </body>
+
 </html>
