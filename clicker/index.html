@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dog Training Clicker - A simple and effective tool for dog training | Онлайн кликер для дрессировки собак - простой и эффективный инструмент">
+    <meta name="keywords" content="dog clicker, dog training, онлайн кликер, дрессировка собак, кликер для собак, онлайн кликер для дрессировки собак">
+    <meta name="language" content="en">
+    <link rel="alternate" hreflang="ru" href="index.html" />
+    <title>Dog Training Clicker | Онлайн кликер для дрессировки собак</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dog Training Clicker</h1>
+            <nav>
+                <a href="index.html" class="active">Clicker</a>
+                <a href="about.html">About Clicker Training</a>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="clicker-section">
+                <button id="clicker" class="clicker-button" onclick="playClick()">
+                    <span class="paw-print">🐾</span>
+                    Click!
+                </button>
+                <p class="instruction">Press the button or use spacebar to click</p>
+            </div>
+
+            <div class="promo-space">
+                <a href="https://play.google.com/store/apps/details?id=com.brightwave.goodboy" target="_blank" rel="noopener noreferrer">
+                    <div class="promo-content">
+                        <p>Get Good Boy - Dog Training App</p>
+                    </div>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Brightwave. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function playClick() {
+            const audio = new Audio('clicker.mp3');
+            audio.play();
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                event.preventDefault();
+                playClick();
+                document.getElementById('clicker').classList.add('clicked');
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            if (event.code === 'Space') {
+                document.getElementById('clicker').classList.remove('clicked');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как ухаживать за Райнером 🐱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: #764ba2;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .info-block {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .warning {
+            background: #fff5f5;
+            border-left-color: #e53e3e;
+            border: 1px solid #fed7d7;
+        }
+
+        .important {
+            background: #fffbeb;
+            border-left-color: #d69e2e;
+            border: 1px solid #feebc8;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .location-card {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .location-title {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 8px;
+        }
+
+        .sleeping-spots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .spot {
+            background: #f0f4f8;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .photo-info {
+            padding: 10px;
+        }
+
+        .photo-date {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .photo-desc {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            counter-increment: step;
+            position: relative;
+            padding: 15px 15px 15px 50px;
+            margin: 10px 0;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        .quick-reference {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 250px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .quick-reference.show {
+            display: block;
+        }
+
+        .quick-reference h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .quick-reference ul {
+            list-style: none;
+            font-size: 0.9em;
+        }
+
+        .quick-reference li {
+            margin: 5px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .quick-reference li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ffd93d;
+        }
+
+        @media (max-width: 768px) {
+            .quick-reference {
+                position: static;
+                max-width: none;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐱 Райнер</h1>
+            <p class="subtitle">Инструкция по уходу за котом</p>
+        </header>
+
+        <div class="quick-reference" id="quickRef">
+            <h4>⏰ Быстрая справка</h4>
+            <ul>
+                <li>Кормление в 23:00</li>
+                <li>Воду менять каждый день</li>
+                <li>Лоток в прихожей</li>
+                <li>Громкие игрушки убрать на ночь</li>
+                <li>Унитаз держать закрытым</li>
+            </ul>
+        </div>
+
+        <nav class="navigation">
+            <button class="nav-btn active" onclick="showSection('feeding')">🍽️ Кормление</button>
+            <button class="nav-btn" onclick="showSection('litter')">🚽 Туалет</button>
+            <button class="nav-btn" onclick="showSection('play')">🎾 Игры</button>
+            <button class="nav-btn" onclick="showSection('sleep')">😴 Сон</button>
+            <button class="nav-btn" onclick="showSection('routine')">⏰ Режим</button>
+            <button class="nav-btn" onclick="showSection('locations')">📍 Где что лежит</button>
+            <button class="nav-btn" onclick="showSection('safety')">⚠️ Безопасность</button>
+            <button class="nav-btn" onclick="showSection('photos')">📸 Фотографии</button>
+        </nav>
+
+        <section id="feeding" class="section active">
+            <h2>🍽️ Кормление</h2>
+            
+            <div class="info-block important">
+                <h3>⏰ Расписание кормления</h3>
+                <p>Автоматическая кормушка срабатывает в 23:00. Лучше всего хорошенько поиграть с Райнером и покормить его влажным кормом до этого времени. Так у него останется еда на ночь и на утро.</p>
+                <br>
+                <p>Пожалуйста, присматривай, чтобы Райнер действительно кушал в течение дня. Ты заметишь это по изменению количества корма в кормушке или услышишь, как он хрустит гранулами. Главное, чтобы еды не оставалось слишком много.</p>
+            </div>
+
+            <h3>🥘 Типы корма</h3>
+            
+            <div class="info-block">
+                <h4>Сухой корм</h4>
+                <p><strong>Основной:</strong> Основная еда Райнера — это сухой корм из автоматической кормушки.</p>
+                <p><strong>Лакомство Orijen:</strong> В качестве особого угощения у нас есть корм Orijen. Он лежит в левом нижнем ящике кухни, рядом с холодильником. Можно дать ему несколько гранул, чтобы похвалить за хорошее поведение или подбодрить после чего-то неприятного, например, мытья.</p>
+            </div>
+
+            <div class="info-block">
+                <h4>Влажный корм</h4>
+                <div class="steps">
+                    <div class="step">Влажный корм из пакетика нужно смешать с небольшим количеством тёплой воды (если корм из холодильника) или воды комнатной температуры. Должен получиться густой супчик. Райнер такое обожает!</div>
+                    <div class="step">Обычно хватает половины пакетика за раз. Остальное можно закрыть и убрать в холодильник, но хранится открытая упаковка не больше суток.</div>
+                </div>
+                <p><em>Я стараюсь не давать ему в один день и влажный корм, и жидкое лакомство из трубочки, чтобы не разбаловать. Но иногда можно сделать исключение, особенно если он боится и не выходит, или если очень хочется его задобрить и потискать. 🥰</em></p>
+            </div>
+
+            <div class="info-block">
+                <h4>🧴 Жидкие лакомства</h4>
+                <p>Жидкое лакомство в трубочке — это его абсолютная слабость! За него он готов на всё.</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>🚫 Ограничения</h3>
+                <p>Райнер — тот ещё попрошайка, но ему ничего нельзя с нашего стола. Пожалуйста, сразу убирай или накрывай остатки еды, иначе он тут же превратится в пушистый пылесос. 😄</p>
+            </div>
+
+            <div class="info-block">
+                <h3>💧 Вода</h3>
+                <p>Из-за жары, пожалуйста, меняй воду в мисках каждый день. Я даже поставила несколько дополнительных стаканов с водой, чтобы он точно не страдал от жажды.</p>
+                <p><strong>Местоположение:</strong> Всё для кошачьей трапезы (миски и еда) находится справа от холодильника.</p>
+            </div>
+        </section>
+
+        <section id="litter" class="section">
+            <h2>🚽 Кошачий туалет</h2>
+            
+            <div class="info-block">
+                <h3>🗑️ Маленькие дела</h3>
+                <p>Маленькие 'подарочки' из лотка мы убираем в специальные пакетики и складываем в ведерко под раковиной. Если не планируешь выбрасывать мусор в тот же день, лучше сразу выкинуть пакетик в общее ведро, чтобы избежать запаха.</p>
+                <p><strong>Пакетики:</strong> Розовые пакетики для уборки лежат в бархатном мешочке на вешалке (Райнер любит их дырявить, так что пришлось спрятать!). Запасные найдутся в шкафу в прихожей.</p>
+            </div>
+
+            <div class="info-block">
+                <h3>💩 Большие дела</h3>
+                <p>Большие дела можно просто смыть в унитаз. Знаю, не идеально, но пока это самый удобный способ. 😅</p>
+                <p><strong>Инструмент:</strong> Для уборки в лотке удобнее всего использовать лопатку с крупными отверстиями.</p>
+            </div>
+
+            <div class="info-block important">
+                <h3>📍 Особенности лотка</h3>
+                <p>Райнер любит играть возле своего лотка, так что не удивляйся, если он будет немного 'путешествовать' по прихожей. Это нормально! Просто поставь его на место, как заметишь, чтобы наполнитель не разносился по всей квартире. 😂</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>⚠️ Особая ситуация</h3>
+                <p>Забавный момент: если застать его врасплох в лотке, он может испугаться и убежать прямо в процессе. Лучше не пугать его ещё больше, а просто замереть или тихо уйти в другую комнату. Он успокоится, вернётся и закончит свои дела. Проверено! 🙈</p>
+            </div>
+        </section>
+
+        <section id="play" class="section">
+            <h2>🧸 Игры и игрушки</h2>
+            
+            <div class="info-block">
+                <h3>📍 Где найти игрушки</h3>
+                <p>Игрушки можно найти на полке над холодильником. А ещё на полу... и под диваном... в общем, везде! 😄</p>
+            </div>
+
+            <h3>🧸 Типы игрушек</h3>
+            
+            <div class="info-block">
+                <h4>✅ Безопасные (можно оставлять без присмотра)</h4>
+                <p>Всевозможные мячики (ёлочные, леопардовые, гремящие) можно смело оставлять на полу. Когда у Райнера есть настроение, он с удовольствием гоняет их сам.</p>
+                <p><strong>Любимые:</strong> Его фавориты — это мягкие шарики, особенно самые маленькие.</p>
+            </div>
+
+            <div class="info-block warning">
+                <h4>⚠️ Только под присмотром</h4>
+                <p>Важно: любые верёвочки и резинки для волос нельзя оставлять без присмотра. Он может играть с ними, только когда они к чему-то привязаны и ты рядом.</p>
+            </div>
+
+            <div class="info-block">
+                <h4>🎯 Интерактивные игры</h4>
+                <p>Когда Райнер в игривом настроении, его может развлечь что угодно: простая палочка, ленточка или любая игрушка на ней. Главное — движение!</p>
+            </div>
+
+            <div class="info-block important">
+                <h3>⏰ Режим игр</h3>
+                <p>Предлагай ему поиграть, даже если он дремлет, особенно днём. Чем активнее он проведёт день, тем спокойнее будет ваша ночь.</p>
+            </div>
+
+            <div class="info-block">
+                <h3>🌙 Ночные соображения</h3>
+                <p><strong>На ночь лучше убирать все громкие игрушки. Иначе его ночные игры могут превратиться в настоящий концерт. 😂</strong></p>
+                <p>Иногда от скуки он может двигать мебель или пытаться открыть шкаф, что бывает громко. Есть два способа это предотвратить: хорошенько вымотать его играми перед сном или закрыть дверь в спальню. Во втором случае он может громко мяукать, так что могут понадобиться беруши.</p>
+            </div>
+        </section>
+
+        <section id="sleep" class="section">
+            <h2>😴 Сон и отдых</h2>
+            
+            <div class="info-block">
+                <h3>🏠 Райнер — мастер пряток и уюта. Вот его любимые места для сна:</h3>
+                <div class="sleeping-spots">
+                    <div class="spot">на шкафу в прихожей (иногда в переноске, где его не видно)</div>
+                    <div class="spot">в шкафу в прихожей</div>
+                    <div class="spot">под кроватью</div>
+                    <div class="spot">в кровати, зарывшись в пледы</div>
+                    <div class="spot">в своём личном гамаке</div>
+                    <div class="spot">на диване (тоже любит прятаться под пледами)</div>
+                    <div class="spot">на стуле в спальне</div>
+                    <div class="spot">на шкафу в ванной</div>
+                    <div class="spot">в бюро (если полки открыты — он точно там!)</div>
+                    <div class="spot">на диване в кабинете</div>
+                </div>
+            </div>
+
+            <div class="info-block important">
+                <h3>🚫 Особые правила</h3>
+                <p>У нас есть джентльменское соглашение: когда Райнер в гамаке, мы его не беспокоим. Это его личное пространство. Максимум — можно нежно погладить, если очень хочется. 😉</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>⚠️ Безопасность</h3>
+                <p>Будь осторожен, когда садишься на кровать или диван! Райнер обожает строить туннели из пледов, и есть шанс, что он отдыхает прямо там. 😂</p>
+            </div>
+
+            <div class="info-block">
+                <h3>🌙 Ночной режим</h3>
+                <p>Ночью он обычно спит с нами в спальне: в гамаке или под кроватью. Мы оставляем дверь приоткрытой, чтобы он мог свободно входить и выходить.</p>
+                <p><strong>Хорошие новости:</strong> И самое прекрасное: по ночам он почти никогда не будит!</p>
+            </div>
+        </section>
+
+        <section id="routine" class="section">
+            <h2>🗓️ Распорядок дня</h2>
+            
+            <div class="info-block important">
+                <h3>🌆 Наш обычный вечерний ритуал выглядит так:</h3>
+                <div class="steps">
+                    <div class="step">Активные игры.</div>
+                    <div class="step">Ужин с влажным кормом.</div>
+                    <div class="step">Время для отдыха и переваривания.</div>
+                    <div class="step">Иногда после еды у него случаются 'зумисы' (внезапный прилив энергии) и поход в лоток.</div>
+                    <div class="step">Спокойный отдых на балконе.</div>
+                    <div class="step">В 23:00 кормушка выдаёт ночную порцию сухого корма.</div>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <h3>🌞 В течение дня</h3>
+                <p>Конечно, отдых на балконе приветствуется в любое время дня! 😁</p>
+            </div>
+        </section>
+
+        <section id="locations" class="section">
+            <h2>📍 Важные места</h2>
+            
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-title">🍽️ Кормление</div>
+                    <p>Кошачья еда и миски — справа от холодильника.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🎾 Игрушки</div>
+                    <p>Игрушки — на полке над холодильником.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🦮 Шлейка</div>
+                    <p>Шлейка — тоже над холодильником.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🥘 Лакомство Orijen</div>
+                    <p>Лакомства Orijen — в левом нижнем ящике кухни.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🗑️ Пакетики для лотка</div>
+                    <p>Розовые пакетики для лотка — в бархатном мешочке на вешалке. Запасные — в шкафу в прихожей.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🧻 Полотенца</div>
+                    <p>Чистые полотенца — в первых трёх секциях бюро в кабинете.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🧴 Шампунь и салфетки</div>
+                    <p>Кошачий шампунь и салфетки — на нижней полке под раковиной в ванной.</p>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-title">🛏️ Постельное бельё</div>
+                    <p>Свежее постельное бельё — внутри дивана.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="safety" class="section">
+            <h2>🚨 Безопасность</h2>
+            
+            <div class="info-block warning">
+                <h3>🚽 Ванная комната</h3>
+                <p><strong>Крышку унитаза лучше держать закрытой. Райнер — известный любитель водных процедур, и уже были случаи падения! 😂</strong></p>
+                <p>Если будешь пользоваться сушилкой, пожалуйста, закрывай дверь в ванную. Кот обожает исследовать пространство за стиральной машиной.</p>
+                <p>Вообще, мы почти всегда держим дверь в ванную закрытой, особенно когда работает стиральная или сушильная машина.</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>🏠 Балкон</h3>
+                <p>Гулять с ним на балконе — отличная идея! Просто присматривай, чтобы он не запрыгивал в опасные места. Стол, стул и кресла — безопасная зона.</p>
+                <p>Прежде чем полностью открыть окно или дверь на балкон, убедись, что кот в другой комнате. Он очень полюбил прогулки и может попытаться сбежать к соседям.</p>
+                <p>Можно выходить на балкон со шлейкой, это немного упрощает контроль, но бдительность терять всё равно не стоит. 😅</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>🚪 Двери</h3>
+                <p>Новый трюк Райнера: он научился прыгать на дверь, грызть её и кататься. Чтобы ночью было тихо, я вешаю на дверь плед и кладу в угол подушку. Или просто закрываю дверь.</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>🚶‍♂️ Прогулки</h3>
+                <p>Он перестал бояться улицы и теперь может громко просить о прогулке у входной двери. Пожалуйста, не выходи с ним на улицу, чтобы не поощрять это поведение. Вместо этого можно погулять по подъезду или посидеть на балконе, но только когда он успокоится.</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>🎾 Игрушки</h3>
+                <p>Никогда не оставляй верёвочки или резинки для волос без присмотра.</p>
+            </div>
+
+            <div class="info-block warning">
+                <h3>🍽️ Еда</h3>
+                <p>Не забывай прятать остатки человеческой еды. Кото-пылесос не дремлет!</p>
+            </div>
+
+            <div class="info-block">
+                <h3>💡 Дополнительные соображения</h3>
+                <p><strong>Жара:</strong> В квартире сейчас жарко. Единственное, что помогает — это держать окна и балконные двери в режиме проветривания (с щелью, в которую он не пролезет).</p>
+                <p><strong>Поведение:</strong> Хорошая новость: из-за жары кот стал намного спокойнее, много спит и меньше требует игр.</p>
+                <p><strong>Взаимодействие:</strong> Если он тебя боится или просто хочется его потискать, лучшее решение — предложить лакомство.</p>
+                <p><strong>Ванная:</strong> Если ты не против компании, не закрывай плотно дверь в ванную. Райнер обязательно придёт составить тебе компанию и будет наблюдать с важным видом. 😂</p>
+                <p><strong>Шлейка:</strong> Розовая шлейка уже идеально отрегулирована. Тканевую нужно просто застёгивать на максимум.</p>
+                <p><strong>Растения:</strong> И ещё одна маленькая просьба: не забывай, пожалуйста, поливать мои растения на балконах. 🙏</p>
+            </div>
+        </section>
+
+        <section id="photos" class="section">
+            <h2>📸 Фотографии Райнера</h2>
+            <p>Фотографии из чата с 21 по 31 июля 2025</p>
+            <div class="photo-gallery">
+                <div class="photo-card">
+                    <img src="photos/photo_1@21-07-2025_14-14-30.jpg" alt="Котенок в первый день дома" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-21 14:14:30</div>
+                        <div class="photo-desc">Котенок в первый день дома</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_2@21-07-2025_14-20-54.jpg" alt="Маленький котенок исследует новый дом" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-21 14:20:54</div>
+                        <div class="photo-desc">Маленький котенок исследует новый дом</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_3@21-07-2025_14-23-46.jpg" alt="Котенок отдыхает в уютном месте" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-21 14:23:46</div>
+                        <div class="photo-desc">Котенок отдыхает в уютном месте</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_4@21-07-2025_14-24-40.jpg" alt="Любопытный взгляд котенка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-21 14:24:40</div>
+                        <div class="photo-desc">Любопытный взгляд котенка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_5@21-07-2025_18-24-01.jpg" alt="Вечерние игры с котенком" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-21 18:24:01</div>
+                        <div class="photo-desc">Вечерние игры с котенком</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_6@22-07-2025_14-46-42.jpg" alt="Котенок на второй день" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-22 14:46:42</div>
+                        <div class="photo-desc">Котенок на второй день</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_7@25-07-2025_06-45-10.jpg" alt="Утреннее пробуждение котенка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 06:45:10</div>
+                        <div class="photo-desc">Утреннее пробуждение котенка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_8@25-07-2025_07-50-07.jpg" alt="Котенок умывается" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 07:50:07</div>
+                        <div class="photo-desc">Котенок умывается</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_9@25-07-2025_07-58-06.jpg" alt="Котенок готов к играм" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 07:58:06</div>
+                        <div class="photo-desc">Котенок готов к играм</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_11@25-07-2025_08-16-54.jpg" alt="Котенок в лучах утреннего солнца" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 08:16:54</div>
+                        <div class="photo-desc">Котенок в лучах утреннего солнца</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_12@25-07-2025_08-17-28.jpg" alt="Игривый котенок" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 08:17:28</div>
+                        <div class="photo-desc">Игривый котенок</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_13@25-07-2025_08-37-33.jpg" alt="Котенок наблюдает за птицами" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 08:37:33</div>
+                        <div class="photo-desc">Котенок наблюдает за птицами</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_14@25-07-2025_08-54-57.jpg" alt="Сонный котенок" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 08:54:57</div>
+                        <div class="photo-desc">Сонный котенок</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_15@25-07-2025_08-54-57.jpg" alt="Котенок в коробке" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 08:54:57</div>
+                        <div class="photo-desc">Котенок в коробке</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_16@25-07-2025_08-54-57.jpg" alt="Котенок точит когти" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-25 08:54:57</div>
+                        <div class="photo-desc">Котенок точит когти</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_17@26-07-2025_09-08-57.jpg" alt="Утро с котенком" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 09:08:57</div>
+                        <div class="photo-desc">Утро с котенком</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_18@26-07-2025_09-08-57.jpg" alt="Котенок и его любимая игрушка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 09:08:57</div>
+                        <div class="photo-desc">Котенок и его любимая игрушка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_19@26-07-2025_09-08-57.jpg" alt="Котенок на подоконнике" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 09:08:57</div>
+                        <div class="photo-desc">Котенок на подоконнике</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_20@26-07-2025_09-08-57.jpg" alt="Котенок в засаде" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 09:08:57</div>
+                        <div class="photo-desc">Котенок в засаде</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_21@26-07-2025_09-08-57.jpg" alt="Смешной котенок" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 09:08:57</div>
+                        <div class="photo-desc">Смешной котенок</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_22@26-07-2025_20-18-16.jpg" alt="Вечерний отдых котенка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 20:18:16</div>
+                        <div class="photo-desc">Вечерний отдых котенка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_23@26-07-2025_20-23-37.jpg" alt="Котенок готовится ко сну" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 20:23:37</div>
+                        <div class="photo-desc">Котенок готовится ко сну</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_24@26-07-2025_20-26-00.jpg" alt="Сладкий сон котенка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-26 20:26:00</div>
+                        <div class="photo-desc">Сладкий сон котенка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_27@28-07-2025_11-02-10.jpg" alt="Котенок на прогулке" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-28 11:02:10</div>
+                        <div class="photo-desc">Котенок на прогулке</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_28@28-07-2025_13-41-06.jpg" alt="Котенок и бабочка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-28 13:41:06</div>
+                        <div class="photo-desc">Котенок и бабочка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_29@29-07-2025_14-35-08.jpg" alt="Котенок в траве" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-29 14:35:08</div>
+                        <div class="photo-desc">Котенок в траве</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_30@29-07-2025_20-48-54.jpg" alt="Вечерние приключения котенка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-29 20:48:54</div>
+                        <div class="photo-desc">Вечерние приключения котенка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_31@29-07-2025_20-48-54.jpg" alt="Котенок на дереве" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-29 20:48:54</div>
+                        <div class="photo-desc">Котенок на дереве</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_32@29-07-2025_20-48-54.jpg" alt="Котенок смотрит на звезды" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-29 20:48:54</div>
+                        <div class="photo-desc">Котенок смотрит на звезды</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_33@29-07-2025_22-22-00.jpg" alt="Поздний вечер с котенком" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-29 22:22:00</div>
+                        <div class="photo-desc">Поздний вечер с котенком</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_34@29-07-2025_22-22-00.jpg" alt="Котенок спит на коленях" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-29 22:22:00</div>
+                        <div class="photo-desc">Котенок спит на коленях</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_35@31-07-2025_12-28-02.jpg" alt="Прощальный взгляд котенка" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-31 12:28:02</div>
+                        <div class="photo-desc">Прощальный взгляд котенка</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_36@31-07-2025_12-28-02.jpg" alt="Котенок в переноске" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-31 12:28:02</div>
+                        <div class="photo-desc">Котенок в переноске</div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="photos/photo_37@31-07-2025_12-46-36.jpg" alt="Котенок уезжает в новый дом" onerror="this.style.display='none'">
+                    <div class="photo-info">
+                        <div class="photo-date">2025-07-31 12:46:36</div>
+                        <div class="photo-desc">Котенок уезжает в новый дом</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Simple navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all nav buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Show/hide quick reference based on section
+            const quickRef = document.getElementById('quickRef');
+            if (sectionId === 'feeding' || sectionId === 'routine') {
+                quickRef.classList.add('show');
+            } else {
+                quickRef.classList.remove('show');
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('quickRef').classList.add('show');
+        });
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
