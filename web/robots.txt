@@ -26,3 +26,5 @@ Allow: /
 
 User-agent: FacebookBot
 Allow: /
+
+Sitemap: https://lamprof.com/sitemap.xml
